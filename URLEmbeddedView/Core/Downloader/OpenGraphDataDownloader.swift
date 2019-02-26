@@ -48,7 +48,7 @@ protocol OpenGraphDataDownloaderProtocol: class {
         let failure: (OGSession.Error, Bool) -> Void = { error, isExpired in
             completion?(.failure(error: error, isExpired: isExpired))
         }
-        if false {
+        if url.host?.contains("youtube.com") == true && !urlString.contains("channel") {
             guard let request = YoutubeEmbedRequest(url: url) else {
                 completion?(.failure(error: Error.createYoutubeRequestFailed(urlString), isExpired: false))
                 return task
